@@ -1,9 +1,24 @@
 ﻿@using MvcFileUploader.HtmlHelper
 @using MvcFileUploader.Models
 @{
-    ViewBag.Title = "Demo";
+    ViewBag.Title = "MusicService";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style type="text/css">
+    #dropZone {
+        background: gray;
+        border: black dashed 3px;
+        width: auto;
+        padding: 50px;
+        text-align: center;
+        color: white;
+    }
+</style>
+
+
+
+
+
 
 
 <!-- file upload modal dialog -->
@@ -11,9 +26,9 @@
     <div class="modal-body"></div>
 </div>
 
-
-
 <div class="well">
     <legend>Upload Inline</legend>        
     @Html.Partial("_MvcFileupload", new FileUploadConfig() { FileTypes = @"/(\.|\/)(mp3)$/i", MaxFileSizeInBytes = 50000000, UploadUrl = Url.Action("UploadFile") })
+    <div id="dropZone">Drop your files here</div>
+
 </div>
