@@ -16,6 +16,7 @@ namespace MusicService.Models
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<Track> Tracks { get; set; }
     }
 
     [Table("UserProfile")]

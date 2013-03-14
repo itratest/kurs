@@ -15,7 +15,7 @@ using Postal;
 namespace MusicService.Controllers
 {
     [Authorize]
-    [InitializeSimpleMembership]
+    [InitializeSimpleMembershipAttribute]
     public class AccountController : Controller
     {
         //
