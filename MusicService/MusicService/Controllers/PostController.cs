@@ -38,7 +38,7 @@ namespace MusicService.Controllers
 
         //
         // GET: /Post/Create
-
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -48,15 +48,32 @@ namespace MusicService.Controllers
         // POST: /Post/Create
 
         [HttpPost]
-        public ActionResult Create(Post post, List<Track> tracks)
+        public ActionResult Create(Post post)
         {
+            var statuses = new List<ViewDataUploadFileResult>();
+            statuses = (List<ViewDataUploadFileResult>)TempData["statuses"];
+
             if (ModelState.IsValid)
             {
+                post.User = db.UserProfiles.Single(u => u.UserName == User.Identity.Name);
                 db.Posts.Add(post);
                 db.SaveChanges();
+
+                foreach (var x in statuses)
+                {
+                    Track track = new Track();
+                    TracksInPost tracks = new TracksInPost();
+                    track.Name = x.name;
+                    track.FileName = x.fullpath;
+                    db.Tracks.Add(track);
+                    tracks.Post = post;
+                    tracks.Track = track;
+                    db.TracksInPost.Add(tracks);
+                }
+                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
-
             return View(post);
         }
 
@@ -79,31 +96,7 @@ namespace MusicService.Controllers
         [HttpPost]
         public ActionResult Edit(Post post)
         {
-            var statuses = new List<ViewDataUploadFileResult>();
-            statuses = (List<ViewDataUploadFileResult>)TempData["statuses"];
-            
-
-            if (ModelState.IsValid)
-            {
-                db.Entry(post).State = EntityState.Modified;
-                db.SaveChanges();
-
-                foreach (var x in statuses)
-                {
-                    Track track = new Track();
-                    TracksInPost tracks = new TracksInPost();
-                    track.Name = x.name;
-                    track.FileName = x.fullpath;
-                    db.Tracks.Add(track);
-                    tracks.Post = post;
-                    tracks.Track = track;
-                    db.TracksInPost.Add(tracks);
-                }
-                db.SaveChanges();
-
-                return RedirectToAction("Index");
-            }
-            return View(post);
+            return RedirectToAction("Index");
         }
 
         //
