@@ -29,6 +29,7 @@ namespace MusicService.Controllers
                                                      x.DeleteUrl = Url.Action("DeleteFile", new {entityId = entityId});
                                                      x.StorageDirectory = Server.MapPath("~/Content/uploads");
                                                      x.UrlPrefix = "/Content/uploads";
+                                                     
                                                  });
 
                 statuses.Add(st);
@@ -40,6 +41,7 @@ namespace MusicService.Controllers
             //adding thumbnail url for jquery file upload javascript plugin
             //statuses.ForEach(x=>x.thumbnail_url=x.url+"?width=80&height=80"); // uses ImageResizer httpmodule to resize images from this url
 
+            TempData["statuses"] = statuses;
 
             return Json(statuses);
         }
