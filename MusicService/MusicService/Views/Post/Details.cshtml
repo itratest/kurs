@@ -1,0 +1,37 @@
+﻿@model MusicService.Models.Post
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Post</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Message)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Message)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Views)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Views)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Likes)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Likes)
+    </div>
+
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.PostId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

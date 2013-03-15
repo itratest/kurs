@@ -1,0 +1,54 @@
+﻿@model MusicService.Models.Post
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Post</legend>
+
+        @Html.HiddenFor(model => model.PostId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Message)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Message)
+            @Html.ValidationMessageFor(model => model.Message)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Views)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Views)
+            @Html.ValidationMessageFor(model => model.Views)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Likes)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Likes)
+            @Html.ValidationMessageFor(model => model.Likes)
+        </div>
+             
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

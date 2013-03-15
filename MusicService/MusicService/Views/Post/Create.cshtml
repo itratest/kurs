@@ -1,0 +1,63 @@
+﻿@model MusicService.Models.Post
+@using MvcFileUploader.Models
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<style type="text/css">
+    #dropZone {
+        background: gray;
+        border: black dashed 3px;
+        width: auto;
+        padding: 50px;
+        text-align: center;
+        color: white;
+    }
+</style>
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Post</legend>
+
+        <!-- file upload modal dialog -->
+        <div class="modal hide" id="dlgFileUpload" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-body"></div>
+        </div>
+
+        <div class="well">
+            <legend>Upload Inline</legend>
+            @Html.Partial("_MvcFileupload", new FileUploadConfig() { FileTypes = @"/(\.|\/)(mp3)$/i", MaxFileSizeInBytes = 50000000, UploadUrl = Url.Action("UploadFile") })
+            <div id="dropZone">Drop your files here</div>
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Message)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Message, new { style="width: 70%;height: 100px;"})
+            @Html.ValidationMessageFor(model => model.Message)
+        </div>
+
+
+        @using (Html.BeginForm("Create", "Post", FormMethod.Post)){
+            
+            
+        <input type="submit" value="Post" />
+
+        }
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
