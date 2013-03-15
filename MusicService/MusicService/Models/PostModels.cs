@@ -18,21 +18,16 @@ namespace MusicService.Models
         public string Message { get; set; }
         public int Views { get; set; }
         public int Likes { get; set; }
-    }
-
-     
-    [Table("UsersPosts")]
-    public class UsersPosts
-    {
-        [Key]
         public UserProfile User { get; set; }
-        public Post Post { get; set; }
     }
+        
 
     [Table("TracksInPost")]
     public class TracksInPost
     {
         [Key]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        public int TracksInPostID { get; set; }
         public Post Post { get; set; }
         public Track Track { get; set; }
     }

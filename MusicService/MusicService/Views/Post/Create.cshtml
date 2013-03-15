@@ -3,7 +3,9 @@
 
 @{
     ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 
 <style type="text/css">
     #dropZone {
@@ -18,8 +20,7 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm())
-{
+
     @Html.ValidationSummary(true)
 
     <fieldset>
@@ -32,7 +33,7 @@
 
         <div class="well">
             <legend>Upload Inline</legend>
-            @Html.Partial("_MvcFileupload", new FileUploadConfig() { FileTypes = @"/(\.|\/)(mp3)$/i", MaxFileSizeInBytes = 50000000, UploadUrl = Url.Action("UploadFile") })
+            @Html.Partial("_MvcFileupload", new MvcFileUploader.Models.FileUploadConfig() { FileTypes = @"/(\.|\/)(mp3)$/i", MaxFileSizeInBytes = 50000000, UploadUrl = Url.Action("UploadFile", "MvcUploaderTestController") })
             <div id="dropZone">Drop your files here</div>
         </div>
 
@@ -43,16 +44,13 @@
             @Html.TextAreaFor(model => model.Message, new { style="width: 70%;height: 100px;"})
             @Html.ValidationMessageFor(model => model.Message)
         </div>
-
-
-        @using (Html.BeginForm("Create", "Post", FormMethod.Post)){
-            
-            
+        @using (Html.BeginForm("Create", "Post", FormMethod.Post))
+{
         <input type="submit" value="Post" />
-
-        }
-    </fieldset>
 }
+        
+    </fieldset>
+
 
 <div>
     @Html.ActionLink("Back to List", "Index")
