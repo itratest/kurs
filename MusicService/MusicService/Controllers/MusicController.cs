@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using MusicService.Models;
 
+
 namespace MusicService.Controllers
 {
     public class MusicController : Controller
@@ -54,7 +55,6 @@ namespace MusicService.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(track);
         }
 
@@ -106,6 +106,9 @@ namespace MusicService.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Track track = db.Tracks.Find(id);
+            var filePath = Server.MapPath("~" + track.FileName.Substring(Convert.ToString(Request.UrlReferrer).Length));
+            if (System.IO.File.Exists(filePath))
+                System.IO.File.Delete(filePath);
             db.Tracks.Remove(track);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -18,5 +18,26 @@ namespace MusicService.Models
         public string Album { get; set; }
         public string Artist { get; set; }
         public string FileName { get; set; }
+
+
+        public Track()
+        {
+        }
+
+        public Track(string name, string album, string artist, string fileUrl)
+        {
+            Name = name;
+            Album = album;
+            Artist = artist;
+            FileName = fileUrl;
+        }
+
+        public Track(string name, string fileUrl)
+        {
+            Name = name;
+            Album = "Unknown";
+            Artist = "Unknown";
+            FileName = fileUrl;      
+        }
     }    
 }
