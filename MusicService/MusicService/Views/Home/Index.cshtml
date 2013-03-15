@@ -1,5 +1,6 @@
 ﻿@using MvcFileUploader.HtmlHelper
 @using MvcFileUploader.Models
+@model IEnumerable<MusicService.Models.Track>
 @{
     ViewBag.Title = "MusicService";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,11 +15,16 @@
         color: white;
     }
 </style>
-
-
-
-
-
+ @Html.Partial("_Player")
+    <h2 style="margin-top: 1em">Music</h2>
+     <div class="sm2-inline-list">
+        @foreach (var item in Model)
+        {
+            <div class="ui360 ui360-vis">
+                <a href=@Html.DisplayFor(modelItem => item.FileName)>@Html.DisplayFor(modelItem => item.Name)</a>
+            </div>    
+        }
+        </div>
 
 
 <!-- file upload modal dialog -->

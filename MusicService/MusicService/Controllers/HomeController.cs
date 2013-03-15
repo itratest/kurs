@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MusicService.Models;
 using MvcFileUploader;
 using MvcFileUploader.Models;
 
@@ -10,11 +11,12 @@ namespace MusicService.Controllers
 {
     public class HomeController : Controller
     {
+
+        private UsersContext db = new UsersContext();
+
         public ActionResult Index()
         {
-
-
-            return View();
+            return View(db.Tracks.ToList());
         }
         [Authorize(Roles = "Admin")]
         public ActionResult About()

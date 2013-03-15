@@ -189,17 +189,31 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\360player-visualization.css" />
+    <Content Include="Content\360player.css" />
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\demo-slider-controls.css" />
+    <Content Include="Content\flashblock\basic.html" />
+    <Content Include="Content\flashblock\flashblock.css" />
+    <Content Include="Content\flashblock\index.html" />
+    <Content Include="Content\flashblock\method1\flashblock.css" />
+    <Content Include="Content\flashblock\method1\flashblock.js" />
+    <Content Include="Content\flashblock\method1\index.html" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\index.css" />
     <Content Include="Content\mvcfileupload\bootstrap.min.css" />
     <Content Include="Content\mvcfileupload\images\glyphicons-halflings-white.png" />
     <Content Include="Content\mvcfileupload\images\glyphicons-halflings.png" />
     <Content Include="Content\mvcfileupload\images\loading.gif" />
     <Content Include="Content\mvcfileupload\mvcfileupload.css" />
+    <Content Include="Content\swf\soundmanager2.swf" />
+    <Content Include="Content\swf\soundmanager2_debug.swf" />
+    <Content Include="Content\swf\soundmanager2_flash9.swf" />
+    <Content Include="Content\swf\soundmanager2_flash9_debug.swf" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -257,9 +271,14 @@
     <Content Include="Content\uploads\readme.txt" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Content\swf\soundmanager2_flash_xdomain.zip" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\360player.js" />
+    <Content Include="Scripts\berniecode-animator.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\demo-slider-controls.js" />
+    <Content Include="Scripts\excanvas.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
@@ -281,6 +300,10 @@
     <Content Include="Scripts\mvcfileupload\bootstrap.min.js" />
     <Content Include="Scripts\mvcfileupload\mvcfileupload.js" />
     <Content Include="Scripts\mvcfileupload\tmpl.min.js" />
+    <Content Include="Scripts\soundmanager2-jsmin.js" />
+    <Content Include="Scripts\soundmanager2-nodebug-jsmin.js" />
+    <Content Include="Scripts\soundmanager2-nodebug.js" />
+    <Content Include="Scripts\soundmanager2.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -332,6 +355,7 @@
     <Content Include="Views\Music\Create.cshtml" />
     <Content Include="Views\Music\Edit.cshtml" />
     <Content Include="Views\Music\Delete.cshtml" />
+    <Content Include="Views\Shared\_Player.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
