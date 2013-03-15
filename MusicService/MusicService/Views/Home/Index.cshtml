@@ -37,6 +37,6 @@
 
 <div class="well">
     <legend>Upload Inline</legend>        
-    @Html.Partial("_MvcFileupload", new FileUploadConfig() { FileTypes = @"/(\.|\/)(mp3|flac)$/i", MaxFileSizeInBytes = 50000000, UploadUrl = Url.Action("UploadFile") })
+    @Html.Partial("_MvcFileupload", new FileUploadConfig() { FileTypes = @"/(\.|\/)(mp3|flac)$/i", MaxFileSizeInBytes = 50000000, UploadUrl = Url.Action("UploadFile", "MvcUploaderTest") })
 </div>
 
