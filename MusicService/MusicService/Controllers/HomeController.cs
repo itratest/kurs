@@ -66,11 +66,6 @@ namespace MusicService.Controllers
             db.SaveChanges();
         }
 
-        public void DeleteTrack(string fileUrl)
-        {
-           
-        }
-
         public Track FindTrackByUrl(string fileUrl)
         {
             return db.Tracks.ToList().Find(x => x.FileName == fileUrl);

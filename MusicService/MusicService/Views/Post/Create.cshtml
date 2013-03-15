@@ -1,6 +1,4 @@
 ﻿@model MusicService.Models.Post
-@using MvcFileUploader.Models
-
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -32,8 +30,8 @@
         </div>
 
         <div class="well">
-            <legend>Upload Inline</legend>
-            @Html.Partial("_MvcFileupload", new MvcFileUploader.Models.FileUploadConfig() { FileTypes = @"/(\.|\/)(mp3)$/i", MaxFileSizeInBytes = 50000000, UploadUrl = Url.Action("UploadFile", "MvcUploaderTestController") })
+            <legend>Upload Inline</legend>        
+            @Html.Partial("_MvcFileupload", new MvcFileUploader.Models.FileUploadConfig() { FileTypes = @"/(\.|\/)(mp3|flac)$/i", MaxFileSizeInBytes = 50000000, UploadUrl = Url.Action("UploadFile") })
             <div id="dropZone">Drop your files here</div>
         </div>
 
