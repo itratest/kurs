@@ -15,23 +15,17 @@
         color: white;
     }
 </style>
-<<<<<<< HEAD
+
  @Html.Partial("_Player")
     <h2 style="margin-top: 1em">Music</h2>
      <div class="sm2-inline-list">
         @foreach (var item in Model)
         {
             <div class="ui360 ui360-vis">
-                <a href=@Html.DisplayFor(modelItem => item.FileName)>@Html.DisplayFor(modelItem => item.Name)</a>
+                <a href=@Url.Encode(item.FileName).ToString()>@Html.DisplayFor(modelItem => item.Name)</a>
             </div>    
         }
         </div>
-=======
-
-
-
->>>>>>> addMusicBranch
-
 
 <!-- file upload modal dialog -->
 <div class="modal hide" id="dlgFileUpload" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true">

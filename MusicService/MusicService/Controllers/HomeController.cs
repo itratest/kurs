@@ -16,7 +16,8 @@ namespace MusicService.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Tracks.ToList());
+            List<Track> trackList = db.Tracks.ToList();
+            return View(trackList);
         }
         [Authorize(Roles = "Admin")]
         public ActionResult About()
@@ -60,7 +61,7 @@ namespace MusicService.Controllers
 
         public void CreateTrack(string name, string fileUrl)
         {
-            Track track = new Track(name,Request.UrlReferrer+fileUrl.Substring(1,(fileUrl.Length-1)));
+            Track track = new Track(name,fileUrl);
             db.Tracks.Add(track);
             db.SaveChanges();
         }
@@ -79,7 +80,8 @@ namespace MusicService.Controllers
         //here i am receving the extra info injected
         public ActionResult DeleteFile(int? entityId, string fileUrl)
         {
-            Track track = FindTrackByUrl(Request.UrlReferrer + fileUrl.Substring(1, (fileUrl.Length - 1)));
+            
+            Track track = FindTrackByUrl(fileUrl);
             if (track != null)
             {
                 db.Tracks.Remove(track);

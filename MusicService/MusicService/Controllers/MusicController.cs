@@ -106,7 +106,7 @@ namespace MusicService.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Track track = db.Tracks.Find(id);
-            var filePath = Server.MapPath("~" + track.FileName.Substring(Convert.ToString(Request.UrlReferrer).Length));
+            var filePath = Server.MapPath(track.FileName);
             if (System.IO.File.Exists(filePath))
                 System.IO.File.Delete(filePath);
             db.Tracks.Remove(track);
