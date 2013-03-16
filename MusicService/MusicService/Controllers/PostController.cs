@@ -62,8 +62,7 @@ namespace MusicService.Controllers
                 foreach (var status in statuses)
                 {
                     TracksInPost tracks = new TracksInPost();
-                    Track track = CreateTrack(status.name, status.url); 
-                    db.Tracks.Add(track);
+                    Track track = new Track(status.name, status.url); 
                     tracks.Post = post;
                     tracks.Track = track;
                     db.TracksInPost.Add(tracks);
@@ -127,24 +126,10 @@ namespace MusicService.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
-
-
-        
-
-        public Track CreateTrack(string name, string fileUrl)
-        {
-            Track track = new Track(name, fileUrl);
-            db.Tracks.Add(track);
-            db.SaveChanges();
-            return track;
-        }
-
         public Track FindTrackByUrl(string fileUrl)
         {
             return db.Tracks.ToList().Find(x => x.FileName == fileUrl);
         }
-
-
         //here i am receving the extra info injected
         public ActionResult DeleteFile(int? entityId, string fileUrl)
         {

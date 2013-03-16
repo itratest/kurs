@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
+using MusicService.Models;
 using MvcFileUploader;
 using MvcFileUploader.Models;
 
@@ -14,23 +15,27 @@ namespace MusicService.Controllers
         {
             return View();
         }
+        private UsersContext db = new UsersContext();
 
         public ActionResult UploadFile(int? entityId) // optionally receive values specified with Html helper
         {
             // here we can send in some extra info to be included with the delete url 
             var statuses = (List<ViewDataUploadFileResult>)TempData["statuses"];
+            if (statuses==null)
+                 statuses=new List<ViewDataUploadFileResult>();
             for (var i = 0; i < Request.Files.Count; i++ )
             {
-                var st = FileSaver.StoreFile(x=>
+                var st = FileSaver.StoreFile(x =>
                                                  {
                                                      x.File = Request.Files[i];
                                                      //note how we are adding an additional value to be posted with delete request
                                                      //and giving it the same value posted with upload
-                                                     x.DeleteUrl = Url.Action("DeleteFile", new {entityId = entityId});
+                                                     x.DeleteUrl = Url.Action("DeleteFile", new { entityId = entityId });
                                                      x.StorageDirectory = Server.MapPath("~/Content/uploads");
                                                      x.UrlPrefix = "/Content/uploads";
-                                                     
+
                                                  });
+                CreateTrack(st.name, st.url); 
                 statuses.Add(st);
             }             
 
@@ -44,6 +49,13 @@ namespace MusicService.Controllers
             return Json(statuses);
         }
 
+        public Track CreateTrack(string name, string fileUrl)
+        {
+            Track track = new Track(name, fileUrl);
+            db.Tracks.Add(track);
+            db.SaveChanges();
+            return track;
+        }
 
 
         //here i am receving the extra info injected
