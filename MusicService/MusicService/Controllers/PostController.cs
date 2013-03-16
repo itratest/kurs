@@ -40,7 +40,7 @@ namespace MusicService.Controllers
         // GET: /Post/Create
         [Authorize]
         public ActionResult Create()
-        {
+        {            
             return View();
         }
 

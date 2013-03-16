@@ -17,26 +17,25 @@ namespace MusicService.Models
         public int PostId { get; set; }
         public string Message { get; set; }
         public int Views { get; set; }
-        public int Likes { get; set; }
         public UserProfile User { get; set; }
 
         public virtual List<Track> Tracks { get; set; }
+        public virtual List<Like> Likes { get; set; }
 
         public Post() 
         {
             Tracks = new List<Track>();
         }
-
-
     }
-        
-  /*  [Table("TracksInPost")]
-    public class TracksInPost
+
+    [Table("Likes")]
+    public class Like 
     {
-        [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int TracksInPostID { get; set; }
-        public Post Post { get; set; }
-        public Track Track { get; set; }
-    }*/
+        [Key, ForeignKey("User"), Column(Order = 0)]
+        public int UserId { get; set; }
+        [Key, ForeignKey("Post"), Column(Order = 1)]
+        public int PostId { get; set; }
+        public virtual Post Post { get; set; }
+        public virtual UserProfile User { get; set; }
+    }
 }
