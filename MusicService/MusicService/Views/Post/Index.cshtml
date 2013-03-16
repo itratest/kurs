@@ -14,7 +14,7 @@
 <h2 style="margin-top: 1em">Music</h2>
 <div class="sm2-inline-list">
     
-        <table>
+       <table class="table table-striped">
         @foreach (var post in Model)
         {
             <tr><td>
@@ -25,7 +25,7 @@
             foreach (var track in tracks)
             {            
                 <div class="ui360 ui360-vis">
-                    <a href=@Url.Encode(track.Name).ToString()>@Html.DisplayFor(modelItem => track.Name)</a>
+                    <a href=@Uri.EscapeDataString(track.FileName)>@Html.DisplayFor(modelItem => track.Name)</a>
                 </div>
                 @post.Message
             }

@@ -62,7 +62,7 @@ namespace MusicService.Controllers
                 foreach (var status in statuses)
                 {
                     TracksInPost tracks = new TracksInPost();
-                    Track track = new Track(status.name, status.url); 
+                    Track track =db.Tracks.ToList().Find(x => x.FileName == status.url); 
                     tracks.Post = post;
                     tracks.Track = track;
                     db.TracksInPost.Add(tracks);

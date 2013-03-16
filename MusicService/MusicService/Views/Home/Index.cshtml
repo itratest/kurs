@@ -23,7 +23,7 @@
         @foreach (var item in Model)
         {
             <div class="ui360 ui360-vis">
-                <a href=@Url.Encode(item.FileName).ToString()>@Html.DisplayFor(modelItem => item.Name)</a>
+                <a href=@Uri.EscapeDataString(item.FileName)>@Html.DisplayFor(modelItem => item.Name)</a>
             </div>    
         }
         </div>

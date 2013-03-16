@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using MusicService.Models;
@@ -57,10 +58,20 @@ namespace MusicService.Controllers
             return track;
         }
 
+        public Track FindTrackByUrl(string fileUrl)
+        {
+            return db.Tracks.ToList().Find(x => x.FileName == fileUrl);
+        }
 
         //here i am receving the extra info injected
         public ActionResult DeleteFile(int? entityId, string fileUrl)
         {
+            Track track = FindTrackByUrl(fileUrl);
+            if (track != null)
+            {
+                db.Tracks.Remove(track);
+                db.SaveChanges();
+            }
             var filePath = Server.MapPath("~" + fileUrl);
 
             if(System.IO.File.Exists(filePath))
