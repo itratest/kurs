@@ -56,17 +56,16 @@ namespace MusicService.Controllers
             if (ModelState.IsValid)
             {
                 post.User = db.UserProfiles.Single(u => u.UserName == User.Identity.Name);
-                db.Posts.Add(post);
+
                 db.SaveChanges();
 
                 foreach (var status in statuses)
                 {
-                    TracksInPost tracks = new TracksInPost();
-                    Track track =db.Tracks.ToList().Find(x => x.FileName == status.url); 
-                    tracks.Post = post;
-                    tracks.Track = track;
-                    db.TracksInPost.Add(tracks);
+                    Track track = db.Tracks.ToList().Find(x => x.FileName == status.url);
+                    post.Tracks.Add(track);
+                    //TracksInPost tracks = new TracksInPost();
                 }
+                db.Posts.Add(post);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

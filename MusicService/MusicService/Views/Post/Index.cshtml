@@ -19,9 +19,7 @@
         {
             <tr><td>
             @{UsersContext db = new UsersContext();
-            var tracks = db.TracksInPost
-                .Where(tr => tr.Post.PostId == post.PostId)
-                .Select(tr => tr.Track);
+            var tracks = post.Tracks;
             foreach (var track in tracks)
             {            
                 <div class="ui360 ui360-vis">
@@ -29,8 +27,9 @@
                 </div>
                 @post.Message
             }
-            }</td>
-            </tr>
+            }            
+            @Html.ActionLink("Delete", "Delete", new { id=post.PostId })
+            </td></tr>
         }
         </table>
 </div>

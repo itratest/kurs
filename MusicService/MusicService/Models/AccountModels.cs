@@ -18,7 +18,12 @@ namespace MusicService.Models
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<Track> Tracks { get; set; }
         public DbSet<Post> Posts { get; set; }
-        public DbSet<TracksInPost> TracksInPost { get; set; }
+
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Post>().HasMany(t => t.Tracks).WithOptional(t => t.Post).WillCascadeOnDelete(true);
+        } 
     }
 
     [Table("UserProfile")]

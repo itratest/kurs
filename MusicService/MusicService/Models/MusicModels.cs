@@ -18,11 +18,9 @@ namespace MusicService.Models
         public string Album { get; set; }
         public string Artist { get; set; }
         public string FileName { get; set; }
+        public virtual Post Post { get; set; }
 
-
-        public Track()
-        {
-        }
+        public Track() { }
 
         public Track(string name, string album, string artist, string fileUrl)
         {

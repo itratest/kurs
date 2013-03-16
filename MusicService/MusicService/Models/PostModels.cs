@@ -19,10 +19,18 @@ namespace MusicService.Models
         public int Views { get; set; }
         public int Likes { get; set; }
         public UserProfile User { get; set; }
+
+        public virtual List<Track> Tracks { get; set; }
+
+        public Post() 
+        {
+            Tracks = new List<Track>();
+        }
+
+
     }
         
-
-    [Table("TracksInPost")]
+  /*  [Table("TracksInPost")]
     public class TracksInPost
     {
         [Key]
@@ -30,5 +38,5 @@ namespace MusicService.Models
         public int TracksInPostID { get; set; }
         public Post Post { get; set; }
         public Track Track { get; set; }
-    }
+    }*/
 }
