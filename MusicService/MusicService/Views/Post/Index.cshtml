@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<MusicService.Models.Post>
+@using MusicService.Models
 
 @{
     ViewBag.Title = "Index";
@@ -6,40 +7,31 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Message)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Views)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Likes)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Message)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Views)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Likes)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PostId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PostId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PostId })
-        </td>
-    </tr>
-}
 
-</table>
+
+@Html.Partial("_Player")
+<h2 style="margin-top: 1em">Music</h2>
+<div class="sm2-inline-list">
+    
+        <table>
+        @foreach (var post in Model)
+        {
+            <tr><td>
+            @{UsersContext db = new UsersContext();
+            var tracks = db.TracksInPost
+                .Where(tr => tr.Post.PostId == post.PostId)
+                .Select(tr => tr.Track);
+            foreach (var track in tracks)
+            {            
+                <div class="ui360 ui360-vis">
+                    <a href=@Url.Encode(track.Name).ToString()>@Html.DisplayFor(modelItem => track.Name)</a>
+                </div>
+                @post.Message
+            }
+            }</td>
+            </tr>
+        }
+        </table>
+</div>
+

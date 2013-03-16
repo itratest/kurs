@@ -18,7 +18,7 @@ namespace MusicService.Controllers
         public ActionResult UploadFile(int? entityId) // optionally receive values specified with Html helper
         {
             // here we can send in some extra info to be included with the delete url 
-            var statuses=new List<ViewDataUploadFileResult>();
+            var statuses = (List<ViewDataUploadFileResult>)TempData["statuses"];
             for (var i = 0; i < Request.Files.Count; i++ )
             {
                 var st = FileSaver.StoreFile(x=>
@@ -31,7 +31,6 @@ namespace MusicService.Controllers
                                                      x.UrlPrefix = "/Content/uploads";
                                                      
                                                  });
-
                 statuses.Add(st);
             }             
 
@@ -40,7 +39,6 @@ namespace MusicService.Controllers
             
             //adding thumbnail url for jquery file upload javascript plugin
             //statuses.ForEach(x=>x.thumbnail_url=x.url+"?width=80&height=80"); // uses ImageResizer httpmodule to resize images from this url
-
             TempData["statuses"] = statuses;
 
             return Json(statuses);

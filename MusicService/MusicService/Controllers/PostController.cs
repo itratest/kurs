@@ -59,23 +59,21 @@ namespace MusicService.Controllers
                 db.Posts.Add(post);
                 db.SaveChanges();
 
-                foreach (var x in statuses)
+                foreach (var status in statuses)
                 {
-                    Track track = new Track();
                     TracksInPost tracks = new TracksInPost();
-                    track.Name = x.name;
-                    track.FileName = x.fullpath;
+                    Track track = CreateTrack(status.name, status.url); 
                     db.Tracks.Add(track);
                     tracks.Post = post;
                     tracks.Track = track;
                     db.TracksInPost.Add(tracks);
                 }
                 db.SaveChanges();
-
                 return RedirectToAction("Index");
             }
             return View(post);
         }
+
 
         //
         // GET: /Post/Edit/5
@@ -133,11 +131,12 @@ namespace MusicService.Controllers
 
         
 
-        public void CreateTrack(string name, string fileUrl)
+        public Track CreateTrack(string name, string fileUrl)
         {
             Track track = new Track(name, fileUrl);
             db.Tracks.Add(track);
             db.SaveChanges();
+            return track;
         }
 
         public Track FindTrackByUrl(string fileUrl)
