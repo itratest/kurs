@@ -18,8 +18,8 @@ namespace MusicService.Models
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<Track> Tracks { get; set; }
         public DbSet<Post> Posts { get; set; }
-
-
+        public DbSet<Like> Likes { get; set; }
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Post>().HasMany(t => t.Tracks).WithOptional(t => t.Post).WillCascadeOnDelete(true);
@@ -34,6 +34,7 @@ namespace MusicService.Models
         public int UserId { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
+        public virtual List<Like> Likes { get; set; }
     }
 
     public class RegisterExternalLoginModel
