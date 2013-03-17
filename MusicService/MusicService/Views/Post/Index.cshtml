@@ -2,7 +2,9 @@
 @using MusicService.Models
 
 @{
+
     ViewBag.Title = "Index";
+
 }
 
 <h2>Index</h2>
@@ -13,26 +15,51 @@
 @Html.Partial("_Player")
 <h2 style="margin-top: 1em">Music</h2>
 <div class="sm2-inline-list">
-    
-       <table class="table table-striped">
+
+    <table class="table table-striped">
         @foreach (var post in Model)
         {
-            <tr><td>
-            @{UsersContext db = new UsersContext();
-            var tracks = post.Tracks;
-            foreach (var track in tracks)
-            {          
-                
-                @Html.ActionLink("Delete", "Delete", new { id=post.PostId })
-                <div class="ui360 ui360-vis">
-                    <a href=@Uri.EscapeDataString(track.FileName)>@Html.DisplayFor(modelItem => track.Name)</a>
-                </div>
-                @post.Message
-            }
-            }            
-            @Html.ActionLink("Delete", "Delete", new { id=post.PostId })
-            </td></trclass="playlist">
-        }
-        </table>
-</div>
 
+            <tr>
+                <td>
+                    @{UsersContext db = new UsersContext();
+
+                      var tracks = post.Tracks;
+
+                      foreach (var track in tracks)
+                      {            
+
+                        <div class="ui360 ui360-vis">
+                            <a href=@Uri.EscapeDataString(track.FileName)>@Html.DisplayFor(modelItem => track.Name)</a>
+                        </div>
+
+                        @post.Message
+
+                      }
+
+                    }
+
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Action
+                        <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            @{ var routevalues = new { id = post.PostId };  
+                                <li>@Html.ActionLink("Edit", "Edit", routevalues)</li>
+                                <li>@Html.ActionLink("Details", "Details", routevalues)</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Delete", "Delete", routevalues)</li>                             
+                            }
+                        </ul>
+                    </div>
+                </td>
+                <td>
+                    <a class="icon-heart" href="http://jetstrap.com/screen-e4dece0b81-test.html"></a>
+                </td>
+            </tr>
+
+        }
+    </table>
+</div>
