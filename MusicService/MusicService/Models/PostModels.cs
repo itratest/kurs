@@ -17,7 +17,7 @@ namespace MusicService.Models
         public int PostId { get; set; }
         public string Message { get; set; }
         public int Views { get; set; }
-        public UserProfile User { get; set; }
+        public virtual UserProfile User { get; set; }
         public virtual List<Track> Tracks { get; set; }
         public virtual List<Like> Likes { get; set; }
 
