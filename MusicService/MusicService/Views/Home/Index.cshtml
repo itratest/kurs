@@ -15,9 +15,10 @@
         text-align: center;
         color: white;
     }
-</style>
+</style>
 
  @Html.Partial("_Player")
+
     <h2 style="margin-top: 1em">Music</h2>
      <div class="sm2-inline-list">
         @foreach (var item in Model)
@@ -26,6 +27,7 @@
                 <a href=@Uri.EscapeDataString(item.FileName)>@Html.DisplayFor(modelItem => item.Name)</a>
             </div>    
         }
+          
         </div>
 
 <!-- file upload modal dialog -->

@@ -21,7 +21,9 @@
             @{UsersContext db = new UsersContext();
             var tracks = post.Tracks;
             foreach (var track in tracks)
-            {            
+            {          
+                
+                @Html.ActionLink("Delete", "Delete", new { id=post.PostId })
                 <div class="ui360 ui360-vis">
                     <a href=@Uri.EscapeDataString(track.FileName)>@Html.DisplayFor(modelItem => track.Name)</a>
                 </div>
@@ -29,7 +31,7 @@
             }
             }            
             @Html.ActionLink("Delete", "Delete", new { id=post.PostId })
-            </td></tr>
+            </td></trclass="playlist">
         }
         </table>
 </div>
