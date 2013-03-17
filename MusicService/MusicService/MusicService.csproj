@@ -351,7 +351,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Music\Index.cshtml" />
     <Content Include="Views\Music\Details.cshtml" />
-    <Content Include="Views\Music\Create.cshtml" />
     <Content Include="Views\Music\Edit.cshtml" />
     <Content Include="Views\Music\Delete.cshtml" />
     <Content Include="Views\Shared\_Player.cshtml" />
