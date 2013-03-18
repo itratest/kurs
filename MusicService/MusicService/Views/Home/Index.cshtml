@@ -26,7 +26,7 @@
         {
             <div class="ui360 ui360-vis">
                 <a href=@Uri.EscapeDataString(item.FileName)>@Html.DisplayFor(modelItem => item.Name)</a>
-            </div>    
+            </div>  
         }
           
         </div>
@@ -36,10 +36,8 @@
     <div class="modal-body"></div>
 </div>
 
-
-
 <div class="well">
-    <legend>Upload Inline</legend>        
+    <legend>Upload mp3</legend>        
     @Html.Partial("_MvcFileupload", new FileUploadConfig() { FileTypes = @"/(\.|\/)(mp3|flac)$/i", MaxFileSizeInBytes = 50000000, UploadUrl = Url.Action("UploadFile", "MvcUploaderTest") })
 </div>
 

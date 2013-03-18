@@ -35,28 +35,7 @@ namespace MusicService.Controllers
             return View(track);
         }
 
-        //
-        // GET: /Music/Create
 
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        //
-        // POST: /Music/Create
-
-        [HttpPost]
-        public ActionResult Create(Track track)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Tracks.Add(track);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(track);
-        }
 
         //
         // GET: /Music/Edit/5

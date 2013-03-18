@@ -10,37 +10,31 @@
 <fieldset>
     <legend>Track</legend>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Name)
-    </div>
+    <h5>
+         @Html.DisplayNameFor(model => model.Name):
+    </h5>
     <div class="display-field">
         @Html.DisplayFor(model => model.Name)
     </div>
 
-    <div class="display-label">
+    <h5>
          @Html.DisplayNameFor(model => model.Album)
-    </div>
+    </h5>
     <div class="display-field">
         @Html.DisplayFor(model => model.Album)
     </div>
 
-    <div class="display-label">
+    <h5>
          @Html.DisplayNameFor(model => model.Artist)
-    </div>
+    </h5>
     <div class="display-field">
         @Html.DisplayFor(model => model.Artist)
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.FileName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.FileName)
-    </div>
+    <hr />
 </fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
+        <input class="btn btn-inverse" type="submit" value="Delete" /> |
+        <button class="btn btn-inverse"> @Html.ActionLink("Back to List", "Index")</button> 
     </p>
 }

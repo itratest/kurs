@@ -10,30 +10,24 @@
 <fieldset>
     <legend>Post</legend>
 
-    <div class="display-label">
+    <h5>
          @Html.DisplayNameFor(model => model.Message)
-    </div>
+    </h5>
     <div class="display-field">
         @Html.DisplayFor(model => model.Message)
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Views)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Views)
-    </div>
-
-    <div class="display-label">
+    <h5>
          @Html.DisplayNameFor(model => model.Likes)
-    </div>
+    </h5>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Likes)
+        @Html.DisplayFor(model => model.Likes.Count)
     </div>
 </fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
+        <input  class="btn btn-inverse" type="submit" value="Delete" /> |
+        <button class="btn btn-inverse"> @Html.ActionLink("Back to List", "Index")</button> 
+        
     </p>
 }
