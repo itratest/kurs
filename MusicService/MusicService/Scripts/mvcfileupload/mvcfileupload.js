@@ -439,7 +439,7 @@ function (n) {
     n.widget("blueimpUI.fileupload", r, {
         options: {
             autoUpload: 1,
-            maxNumberOfFiles: 1,
+            maxNumberOfFiles: undefined,
             maxFileSize: undefined,
             minFileSize: undefined,
             acceptFileTypes: /.+$/i,

@@ -8,14 +8,14 @@
 
 @Html.Partial("_Player")
 <h2 style="margin-top: 1em">Music</h2>
-
+<button class="btn btn-inverse">@Html.ActionLink("Create New", "Create", "Post")</button>
 @foreach (var post in Model)
 {
     <div class="row">
         <div class="span8">
             <div class="row">
                 <div class="span8">
-                    <h4><strong>@Html.ActionLink("Title of the post", "Details", new { id = post.PostId })</strong></h4>
+                    <h4><strong>@Html.ActionLink("Open", "Details", new { id = post.PostId })</strong></h4>
                 </div>
             </div>
             <div class="row">

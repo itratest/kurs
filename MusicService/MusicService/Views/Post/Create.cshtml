@@ -3,9 +3,7 @@
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    TempData["statuses"] = new List<MvcFileUploader.Models.ViewDataUploadFileResult>();
-
-    
+    TempData["statuses"] = new List<MvcFileUploader.Models.ViewDataUploadFileResult>(); 
 }
 
 
@@ -19,53 +17,6 @@
         color: white;
     }
 </style>
-
-<script type="text/javascript" src="/Scripts/binaryajax.js" ></script>
-<script type="text/javascript" src="/Scripts/id3.js" ></script>
-
-
-
-<h2>Create</h2>
-
-
-<div class="editor-label">
-            @Html.Label("Название")
-        </div>
-        <div class="editor-field">
-            @Html.TextBox("Name")
-        </div>
-
-        <div class="editor-label">
-            @Html.Label("Исполнитель")
-        </div>
-        <div class="editor-field">
-            @Html.Editor("Artist")
-            @Html.ValidationMessage("Track")
-        </div>
-
-        <div class="editor-label">
-            @Html.Label("Альбом")
-        </div>
-        <div class="editor-field">
-            @Html.Editor("Album")
-        </div>
-
-    @Html.ValidationSummary(true)
-<script type="text/javascript">
-
-    function mycallback() {
-        // either call the ID3.getAllTags([file]) function which returns an object holding all the tags
-        alert(
-         "All tags in this file: " + ID3.getAllTags("filename").toSource()
-        );
-
-        var TheTextBox = document.getElementById("Artist")
-        TheTextBox.value += ID3.getAllTags("filename").toSource()
-        // or call ID3.getTag([file], [tag]) to get a specific tag
-    }
-    ID3.loadTags("filename", mycallback);
-    
-</script>
         <legend>Post</legend>
 
         <!-- file upload modal dialog -->
@@ -89,7 +40,7 @@
             @Html.ValidationMessageFor(model => model.Message)
         </div>
         
-        <input type="submit" value="Post" />
+        <input class="btn btn-inverse" type="submit" value="Post" />
         
         
     </fieldset>
