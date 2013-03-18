@@ -1,8 +1,11 @@
 ﻿@model MusicService.Models.Post
+@using MusicService.Models
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
     TempData["statuses"] = new List<MvcFileUploader.Models.ViewDataUploadFileResult>();
+
+    
 }
 
 
@@ -17,12 +20,52 @@
     }
 </style>
 
+<script type="text/javascript" src="/Scripts/binaryajax.js" ></script>
+<script type="text/javascript" src="/Scripts/id3.js" ></script>
+
+
+
 <h2>Create</h2>
 
 
-    @Html.ValidationSummary(true)
+<div class="editor-label">
+            @Html.Label("Название")
+        </div>
+        <div class="editor-field">
+            @Html.TextBox("Name")
+        </div>
 
+        <div class="editor-label">
+            @Html.Label("Исполнитель")
+        </div>
+        <div class="editor-field">
+            @Html.Editor("Artist")
+            @Html.ValidationMessage("Track")
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Альбом")
+        </div>
+        <div class="editor-field">
+            @Html.Editor("Album")
+        </div>
+
+    @Html.ValidationSummary(true)
+<script type="text/javascript">
+
+    function mycallback() {
+        // either call the ID3.getAllTags([file]) function which returns an object holding all the tags
+        alert(
+         "All tags in this file: " + ID3.getAllTags("http://localhost:64083/015-marilyn_manson-15-130080392158859088.mp3").toSource()
+        );
+
+        var TheTextBox = document.getElementById("Artist")
+        TheTextBox.value += ID3.getAllTags("http://localhost:64083/015-marilyn_manson-15-130080392158859088.mp3").toSource()
+        // or call ID3.getTag([file], [tag]) to get a specific tag
+    }
+    ID3.loadTags("015-marilyn_manson-15-130080392158859088.mp3", mycallback);
     
+</script>
         <legend>Post</legend>
 
         <!-- file upload modal dialog -->
@@ -42,7 +85,7 @@
             @Html.LabelFor(model => model.Message)
         </div>
         <div class="editor-field">
-            @Html.TextAreaFor(model => model.Message, new { style="width: 70%;height: 100px;"})
+            @Html.TextAreaFor(model => model.Message, new { style = "width: 70%;height: 100px;" })
             @Html.ValidationMessageFor(model => model.Message)
         </div>
         
@@ -51,7 +94,7 @@
         
     </fieldset>
     }
-
+    
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
