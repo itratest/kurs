@@ -56,14 +56,14 @@
     function mycallback() {
         // either call the ID3.getAllTags([file]) function which returns an object holding all the tags
         alert(
-         "All tags in this file: " + ID3.getAllTags("http://localhost:64083/015-marilyn_manson-15-130080392158859088.mp3").toSource()
+         "All tags in this file: " + ID3.getAllTags("filename").toSource()
         );
 
         var TheTextBox = document.getElementById("Artist")
-        TheTextBox.value += ID3.getAllTags("http://localhost:64083/015-marilyn_manson-15-130080392158859088.mp3").toSource()
+        TheTextBox.value += ID3.getAllTags("filename").toSource()
         // or call ID3.getTag([file], [tag]) to get a specific tag
     }
-    ID3.loadTags("015-marilyn_manson-15-130080392158859088.mp3", mycallback);
+    ID3.loadTags("filename", mycallback);
     
 </script>
         <legend>Post</legend>
